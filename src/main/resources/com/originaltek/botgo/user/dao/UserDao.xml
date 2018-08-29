@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.originaltek.botgo.user.dao.UserDao">
+
+    <resultMap id="userResultMap" type="com.originaltek.botgo.user.entity.UserEntity">
+        <id column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="user_pwd" property="password" jdbcType="VARCHAR"/>
+        <result column="user_addr" property="userAddr" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="user_flag" property="userFlag" jdbcType="VARCHAR"/>
+        <result column="user_license" property="userLicense" jdbcType="VARCHAR"/>
+        <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP"/>
+        <result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+        <result column="locked" property="locked" jdbcType="INTEGER"/>
+        <result column="dependence" property="dependence" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <select id="findByUserName" parameterType="String" resultMap="userResultMap">
+            SELECT T.user_id,
+                   T.user_name,
+                   T.user_pwd,
+                   T.user_addr,
+                   T.create_time,
+                   T.user_flag,
+                   T.user_license,
+                   T.begin_time,
+                   T.end_time,
+                   T.locked,
+                   T.dependence
+            FROM t_user T
+            WHERE T.user_name = #{value,jdbcType=VARCHAR}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,23 @@
+#security:
+#  user:
+#    name: user
+#    password: pass
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.31.200:3306/godb?useUnicode=true&characterEncoding=utf-8&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username : root
+    password: Alldo807!
+  redis:
+    host: 192.168.31.201
+    database: 0
+    password: Alldo807!!
+
+
+logging:
+  level:
+    com.originaltek.botgo.user.dao : DEBUG
+
+#Md5 验证盐值
+password:
+  salt: geelysdafaqj23ou89ZXcj@#$@#$#@KJdjklj;D../dSF.,
