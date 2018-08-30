@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  */
 @SpringBootApplication
 @EnableConfigurationProperties
-@MapperScan("com.originaltek.botgo.user.dao")
+@MapperScan("com.originaltek.botgo.user.dao" )
 @SessionAttributes("authorizationRequest")
 public class AuthApplication {
 

@@ -41,15 +41,40 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     private SecurityHttpSessionListener myHttpSessionListener;
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
-        try {
-            String authHeader = httpServletRequest.getHeader("Authorization");
+        String authHeader = httpServletRequest.getHeader("Authorization");
+
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+
+
+
+            final String authToken = authHeader.substring("Bearer ".length());
+
+            String username = JwtTokenUtil.parseToken(authToken);
+            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                UserDetails userDetails = ApplicationContextHolder.getBean(AuthUserDetailService.class).loadUserByUsername(username);
+                if (userDetails != null) {
+
+                    UsernamePasswordAuthenticationToken authentication =
+                            new UsernamePasswordAuthenticationToken(userDetails, userDetails.getPassword(), userDetails.getAuthorities());
+                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                }
+            }
+        }else{
+            String uri = httpServletRequest.getRequestURI();
+            if(!uri.startsWith("/oauth")){
+                SecurityContextHolder.getContext().setAuthentication(null);
+            }
+        }
+        filterChain.doFilter(httpServletRequest, httpServletResponse);
+
+        /**
+        String authHeader = httpServletRequest.getHeader("Authorization");
             if (authHeader != null && authHeader.startsWith("Bearer ")) {
                 final String authToken = authHeader.substring("Bearer ".length());
                 String username = JwtTokenUtil.parseToken(authToken);
 
-                if (username != null
-                        && SecurityContextHolder.getContext().getAuthentication() == null
-                )
+                if (username != null && SecurityContextHolder.getContext().getAuthentication() == null)
                 {
                     AuthUserDetailService userDetailsService =  ApplicationContextHolder.getBean(AuthUserDetailService.class);
                     UserDetails userDetails = userDetailsService.loadUserByUsername(username);
@@ -61,14 +86,8 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                     }
                 }
             }
-            try {
                 filterChain.doFilter(httpServletRequest, httpServletResponse);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
+         */
     }
 
 

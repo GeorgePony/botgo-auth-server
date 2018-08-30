@@ -29,9 +29,9 @@ public class BotGoResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .anonymous()
                 .and()
                 .authorizeRequests()
-                // .antMatchers("/product/**").access("#oauth2.hasScope('select') and hasPermission('delete')")
-                .antMatchers("/product/**").access("#oauth2.hasScope('select')")
-                .antMatchers("/order/**").authenticated();//配置order访问控制，必须认证过后才可以访问
+                 .antMatchers("/product/**").authenticated();
+                //.antMatchers("/product/**").access("#oauth2.hasScope('select')")
+                //.antMatchers("/order/**").authenticated();//配置order访问控制，必须认证过后才可以访问
         // @formatter:on
     }
 

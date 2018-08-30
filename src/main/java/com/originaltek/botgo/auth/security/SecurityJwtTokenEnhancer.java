@@ -22,6 +22,10 @@ public class SecurityJwtTokenEnhancer implements TokenEnhancer {
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
         OAuth2RefreshToken refreshToken = accessToken.getRefreshToken();
+        String oldValue = accessToken.getValue();
+        Map<String,Object> additionalMap = new HashMap<String, Object>(4);
+        additionalMap.put("oldValue" , oldValue);
+        additionalMap.put("oldRefreshValue" , refreshToken.getValue());
         Date expireDate = accessToken.getExpiration();
         Map<String,Object> additionalInfo = accessToken.getAdditionalInformation();
         Set<String> scopes = accessToken.getScope();
@@ -41,7 +45,7 @@ public class SecurityJwtTokenEnhancer implements TokenEnhancer {
         newAccessToken.setExpiration(expireDate);
         newAccessToken.setRefreshToken(refreshToken);
         newAccessToken.setScope(scopes);
-
+        newAccessToken.setAdditionalInformation(additionalMap);
 
         return newAccessToken;
 //        return accessToken;

@@ -52,6 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+        /**
         http
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
@@ -68,13 +69,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //.successHandler(authenticationSuccessHandler).permitAll()
                 .and()
                 .csrf().disable();
+         */
+        http
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .permitAll()
+        .and().csrf().disable();
 
         http.rememberMe().rememberMeParameter("remember-me")
                 .userDetailsService(userDetailsService()).tokenValiditySeconds(300);
 
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
-        http.exceptionHandling().accessDeniedHandler(securityAccessDeniedHandler);
+        //http.exceptionHandling().accessDeniedHandler(securityAccessDeniedHandler);
 
 
     }

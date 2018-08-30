@@ -1,4 +1,4 @@
-package com.originaltek.botgo.auth;
+package com.originaltek.botgo.user.web;
 
 
 import org.springframework.context.annotation.Configuration;
