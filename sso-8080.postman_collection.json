@@ -1,0 +1,368 @@
+{
+	"info": {
+		"_postman_id": "e94807e9-c6df-4408-b30c-212bd3cb3028",
+		"name": "sso-8080",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Oauth2登录-密码模式 -8080 product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJvcmlnaW5hbHRlayIsImV4cCI6MTUzNTY3OTMwNn0.NGrTmOwNorVSKuvmF7sAKDJo5Wv-dam-B3WpsbDRF4U5yFoealSxQ61nbY3NBGiAXN7Ip2ZFz69jOpLgo87raA_-TXw_SG2WjtguNRLoiP6_bEcvquMyxGti3Eqcj8Cwr_fqxawBEHlW1Ii2wV4eKlOc-qEv5blmBOkeYsZK6no"
+					},
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJvcmlnaW5hbHRlayIsInNjb3BlIjpbInNlbGVjdCJdLCJvbGRSZWZyZXNoVmFsdWUiOiJmYzk0YzliYy1hOTQ0LTRiZTctYjcxMC0zN2FhNzZlYmQzNjEiLCJvbGRWYWx1ZSI6ImQyZTRlYzg2LWIyN2QtNDgxNy04YTA2LWVlMzYyNmRkOTk3NCIsImV4cCI6MTUzNTcwODI5NSwianRpIjoiZXlKaGJHY2lPaUpTVXpJMU5pSjkuZXlKemRXSWlPaUp2Y21sbmFXNWhiSFJsYXlJc0ltVjRjQ0k2TVRVek5UWTNPVE13Tm4wLk5HclRtT3dOb3JWU0t1dm1GN3NBS0RKbzVXdi1kYW0tQjNXcHNiRFJGNFU1eUZvZWFsU3hRNjFuYlkzTkJHaUFYTjdJcDJaRno2OWpPcExnbzg3cmFBXy1UWHdfU0cyV2p0Z3VOUkxvaVA2X2JFY3ZxdU15eEd0aTNFcWNqOEN3cl9mcXhhd0JFSGxXMUlpMndWNGVLbE9jLXFFdjVibG1CT2tlWXNaSzZubyIsImNsaWVudF9pZCI6ImNsaWVudF83In0.BfahRDK48opDXFVmbnB7UhsGoRTK7UGjT8wAZVxv5x0"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "originaltek",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "842655",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "scope",
+							"value": "select",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "client_id",
+							"value": "client_1",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "client_secret",
+							"value": "123456",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/order/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"order",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Oauth2登录-密码模式登录 -8080",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJvcmlnaW5hbHRlayIsImV4cCI6MTUzNTQ1MDg5NX0.XxU2YyjeCH5NrhBRk9VHYP6V2ibTPfgRrG0ZRH_t582SlRYuU_M5EXJAkWNGgbkGjl7HBeP5xXJeVqfVCEC47kKURePDS63JnNt0ilXpB78LnkAS7S9i36rNNZKlo6ALjyingAK6jfNAi6gTqwZKLdOnsFsxlSK8kaoVFL3tBmw",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/text;charset=UTF-8"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "originaltek",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "842655",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "select",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "client_7",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Oauth2登录-客户端模式登录 -8080",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvcmlnaW5hbHRlayIsImNyZWF0ZWQiOjE1MzQ4MzkzNzg2MjQsImV4cCI6MTUzNDg0MDU3OH0.y2nDgWGxBSF9RMKJuHiqabFC1_0SUptZllSLq4bcCpd1DV9Qu1csCsALJrGH0ydBb1IueWN24qP0gI7G6IWvAw",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "select",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "client_1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刷新token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvcmlnaW5hbHRlayIsImNyZWF0ZWQiOjE1MzQ4MzkzNzg2MjQsImV4cCI6MTUzNDg0MDU3OH0.y2nDgWGxBSF9RMKJuHiqabFC1_0SUptZllSLq4bcCpd1DV9Qu1csCsALJrGH0ydBb1IueWN24qP0gI7G6IWvAw",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MzgxNDA0MDAsInVzZXJfbmFtZSI6Im9yaWdpbmFsdGVrIiwianRpIjoiYTZhMDhmNDAtNDlmZi00ZmU4LWJjZTUtZjdhYWM5YmJiMTljIiwiY2xpZW50X2lkIjoiY2xpZW50XzUiLCJzY29wZSI6WyJzZWxlY3QiXSwiYXRpIjoiZXlKaGJHY2lPaUpTVXpJMU5pSjkuZXlKemRXSWlPaUp2Y21sbmFXNWhiSFJsYXlJc0ltVjRjQ0k2TVRVek5UVTBPVFF3TVgwLmR4MHYyVVFtTWFGZEVCdWl5bXR5UkN5cmFYcmNJeWI1MnJhbnlNMzJDMWFFeW0wMW04SDV5bzFiTU1iVHA3NDZseENKWkQ4Ykp1TC1DQUU1TGpDN2xqV1M3VVFKXzZJb2hGcGRVYk9XY2NhV2RpYTdTYnlJSk1JYzF1NDh5cjItOTJ1aHhXcGpVN3FaTzBDY2pHWWptRUZKRGtZXzF4V0owbEFERXZoWjlKUSJ9.j8uYRBRFgSIRTnUWInNSmJG3Xr-cwVLw-5WkLHe4gZs",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "client_5",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "验证token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvcmlnaW5hbHRlayIsImNyZWF0ZWQiOjE1MzQ4MzkzNzg2MjQsImV4cCI6MTUzNDg0MDU3OH0.y2nDgWGxBSF9RMKJuHiqabFC1_0SUptZllSLq4bcCpd1DV9Qu1csCsALJrGH0ydBb1IueWN24qP0gI7G6IWvAw",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "refresh_token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MzgxNDA0MDAsInVzZXJfbmFtZSI6Im9yaWdpbmFsdGVrIiwianRpIjoiYTZhMDhmNDAtNDlmZi00ZmU4LWJjZTUtZjdhYWM5YmJiMTljIiwiY2xpZW50X2lkIjoiY2xpZW50XzUiLCJzY29wZSI6WyJzZWxlY3QiXSwiYXRpIjoiZXlKaGJHY2lPaUpTVXpJMU5pSjkuZXlKemRXSWlPaUp2Y21sbmFXNWhiSFJsYXlJc0ltVjRjQ0k2TVRVek5UVTBPVFF3TVgwLmR4MHYyVVFtTWFGZEVCdWl5bXR5UkN5cmFYcmNJeWI1MnJhbnlNMzJDMWFFeW0wMW04SDV5bzFiTU1iVHA3NDZseENKWkQ4Ykp1TC1DQUU1TGpDN2xqV1M3VVFKXzZJb2hGcGRVYk9XY2NhV2RpYTdTYnlJSk1JYzF1NDh5cjItOTJ1aHhXcGpVN3FaTzBDY2pHWWptRUZKRGtZXzF4V0owbEFERXZoWjlKUSJ9.j8uYRBRFgSIRTnUWInNSmJG3Xr-cwVLw-5WkLHe4gZs",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "client_id",
+							"value": "client_5",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "client_secret",
+							"value": "123456",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "access_token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJzZWxlY3QiXSwib2xkUmVmcmVzaFZhbHVlIjoiZjUwNWYxYWMtMDZkNy00YjRiLWExY2QtM2FkNzEyNDY3ZmVlIiwib2xkVmFsdWUiOiI1MmRhYzQxNC0wZTc0LTRkM2UtOWE5My0wNmQ5OGZiYTFlMWIiLCJleHAiOjE1MzU5Njk2MTcsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0xJRU5UIl0sImp0aSI6ImV5SmhiR2NpT2lKU1V6STFOaUo5LmV5SnpkV0lpT2lKamJHbGxiblJmTVNJc0ltVjRjQ0k2TVRVek5UazBNRFl4TjMwLnZuSTc1U0JjZEFyaDR6TXBWUHlIU212My1tY2VjX20ycTFjMGFfWXJHV2JOMkQwNHpGWmtBU25NTEh4V1B0WGgyM2p4VU9zaEM0MGJqX0RKdURITzRtX2wyWGh5aU9HblhfYjd6OUd1dUR5ZGY3MURJZnp0b0JjMWlQeFQxTlZaS3UwZHZqR21iQndtYng0MDNQWVlUNzNjekNEWk5ndV9QeHRpLWh6aG84OCIsImNsaWVudF9pZCI6ImNsaWVudF8xIn0.8EEfE4fBluaN84C8GDkFeF8m7AdU32-TulIw4IXmv4M",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/checkToken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"checkToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Oauth2登录-注销 -8080",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJvcmlnaW5hbHRlayIsImV4cCI6MTUzNTQ1MDg5NX0.XxU2YyjeCH5NrhBRk9VHYP6V2ibTPfgRrG0ZRH_t582SlRYuU_M5EXJAkWNGgbkGjl7HBeP5xXJeVqfVCEC47kKURePDS63JnNt0ilXpB78LnkAS7S9i36rNNZKlo6ALjyingAK6jfNAi6gTqwZKLdOnsFsxlSK8kaoVFL3tBmw",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "access_token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJzZWxlY3QiXSwib2xkUmVmcmVzaFZhbHVlIjoiNzYxNmQxMTMtMTg1MC00MzVmLTgyNzgtZWEzYmI4NjI2MGE3Iiwib2xkVmFsdWUiOiIwOTg4N2VkNC1jMGM2LTRiOTgtOTJmZS00MTczZGIyMzRjZTgiLCJleHAiOjE1MzU5Njg0ODQsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0xJRU5UIl0sImp0aSI6ImV5SmhiR2NpT2lKU1V6STFOaUo5LmV5SnpkV0lpT2lKamJHbGxiblJmTVNJc0ltVjRjQ0k2TVRVek5Ua3pPVFE0TkgwLkVNMVg4UDVGdVVwQ2dtU0NoOTRtMFJjU2ltV1VZaWstc0JhczJabEVOMkNwOUpOaWlFM0N5SkFqWG5mcF9qYXNwb1R3eHM1QkZHSkRqVkpoWDU3eTRXcXhqck91MllvYl9Tajk2NW5OOFUwY29NVTZtVG9lVExlTnJPMFlZS0tiNnphUDJvenE2eVJjbnZNbDJEVzI4TzVGdDB6ZVhaSVRMVU9MRkxkcE44YyIsImNsaWVudF9pZCI6ImNsaWVudF8xIn0.ZiH2gnq_GZaEf0u9sgjOiVFC6yFSj2YQFR34hriDqI4",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/revoke",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"revoke"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
