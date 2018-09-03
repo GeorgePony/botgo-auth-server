@@ -12,6 +12,8 @@ spring:
     host: 192.168.31.201
     database: 0
     password: Alldo807!!
+  thymeleaf:
+    cache: false
 
 
 logging:
@@ -21,3 +23,8 @@ logging:
 #Md5 验证盐值
 password:
   salt: geelysdafaqj23ou89ZXcj@#$@#$#@KJdjklj;D../dSF.,
+  #Spring Security 不需要验证的路径
+  # 注销与验证token
+security:
+  ignorePath: '/oauth/revoke,/oauth/checkToken,/oauth/login'
+

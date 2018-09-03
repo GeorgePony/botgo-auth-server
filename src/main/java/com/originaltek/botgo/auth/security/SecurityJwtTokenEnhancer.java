@@ -1,12 +1,17 @@
 package com.originaltek.botgo.auth.security;
 
+import com.originaltek.botgo.auth.ApplicationContextHolder;
 import com.originaltek.botgo.user.entity.UserEntity;
 import com.originaltek.botgo.user.util.JwtTokenUtil;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2RefreshToken;
+import org.springframework.security.oauth2.provider.ClientDetails;
+import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -18,7 +23,16 @@ import java.util.Set;
  * author      : chen.zhangchao
  * todo        :
  */
-public class SecurityJwtTokenEnhancer implements TokenEnhancer {
+public class SecurityJwtTokenEnhancer
+        implements TokenEnhancer
+        //implements TokenEnhancer
+{
+
+
+
+
+
+
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
         OAuth2RefreshToken refreshToken = accessToken.getRefreshToken();
@@ -38,6 +52,13 @@ public class SecurityJwtTokenEnhancer implements TokenEnhancer {
             UserEntity entity = (UserEntity)authentication.getPrincipal();
             userName = entity.getUsername();
         }
+
+        authentication.getOAuth2Request().getGrantType();
+        String clientId = authentication.getOAuth2Request().getClientId();
+        ClientDetailsService clientDetailsService =  ApplicationContextHolder.getBean("jdbcClientDetailsService");
+        ClientDetails clientDetails = clientDetailsService.loadClientByClientId(clientId);
+        String secret = clientDetails.getClientSecret();
+
 
         String jwtToken = JwtTokenUtil.generateToken( userName , 1000 );
         DefaultOAuth2AccessToken newAccessToken = new DefaultOAuth2AccessToken(jwtToken);

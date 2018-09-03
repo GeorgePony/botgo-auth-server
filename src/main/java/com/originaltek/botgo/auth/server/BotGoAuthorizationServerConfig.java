@@ -1,5 +1,7 @@
 package com.originaltek.botgo.auth.server;
 
+import com.originaltek.botgo.auth.redis.JwtRedisTokenStore;
+import com.originaltek.botgo.auth.security.SecurityJwtTokenEnhancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +16,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -24,7 +27,9 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * create_time : 2018/8/24 15:11
@@ -48,6 +53,7 @@ public class BotGoAuthorizationServerConfig extends AuthorizationServerConfigure
 
     @Autowired(required = false)
     private TokenEnhancer jwtTokenEnhancer;
+
 
 
     @Resource
@@ -94,7 +100,7 @@ public class BotGoAuthorizationServerConfig extends AuthorizationServerConfigure
     /**
      * @return
      */
-    @Bean
+    @Bean("jdbcClientDetailsService")
     public ClientDetailsService getClientDetailsService(){
         return new JdbcClientDetailsService(dataSource);
     }
@@ -106,7 +112,8 @@ public class BotGoAuthorizationServerConfig extends AuthorizationServerConfigure
      */
     @Bean
     public TokenStore tokenStore() {
-        RedisTokenStore redis = new RedisTokenStore(redisConnectionFactory);
+        RedisTokenStore redis = new JwtRedisTokenStore(redisConnectionFactory);
+        //RedisTokenStore redis = new RedisTokenStore(redisConnectionFactory);
         return redis;
     }
 
@@ -127,6 +134,8 @@ public class BotGoAuthorizationServerConfig extends AuthorizationServerConfigure
 
         endpoints.reuseRefreshTokens(true);
 
+
+
         if(jwtAccessTokenConverter != null && jwtTokenEnhancer != null){
             TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
             List<TokenEnhancer> enhancerList = new ArrayList();
@@ -136,6 +145,7 @@ public class BotGoAuthorizationServerConfig extends AuthorizationServerConfigure
 
             endpoints.tokenEnhancer(tokenEnhancerChain).accessTokenConverter(jwtAccessTokenConverter);
         }
+
 
     }
 

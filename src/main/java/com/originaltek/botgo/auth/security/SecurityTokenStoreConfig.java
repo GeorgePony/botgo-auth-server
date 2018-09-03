@@ -15,7 +15,7 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 /**
  * create_time : 2018/8/27 15:38
  * author      : chen.zhangchao
- * todo        :
+ * todo        : 非对称加密的入口在这里
  */
 @Configuration
 public class SecurityTokenStoreConfig {
@@ -61,7 +61,7 @@ public class SecurityTokenStoreConfig {
         /**
          * 用于扩展JWT
          * @return
-         */
+         * */
         @Bean
         @ConditionalOnMissingBean(name = "jwtTokenEnhancer")
         public TokenEnhancer jwtTokenEnhancer(){

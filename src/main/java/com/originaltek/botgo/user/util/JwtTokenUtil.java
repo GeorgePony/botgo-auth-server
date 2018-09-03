@@ -1,6 +1,7 @@
 package com.originaltek.botgo.user.util;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -33,6 +34,31 @@ public class JwtTokenUtil {
     public static final String CONST_ALIAS = "jwt";
 
 
+    /**
+     * 无错误
+     */
+    public static final int TOKEN_CORRECT = 0;
+    /**
+     * 密码过期
+     */
+    public static final int TOKEN_ERR_EXPIRED = 1;
+    public static final String TOKEN_ERR_EXPIRED_MSG = "密码过期";
+
+
+    public static final int TOKEN_ERR_LOGOUT = 2;
+    public static final String TOKEN_ERR_LOGOUT_MSG = "用户已经注销";
+
+
+    /**
+     * 其他错误
+     */
+    public static final int TOKEN_ERR_OTHER = 3;
+    public static final String TOKEN_ERR_OTHER_MSG = "其他错误";
+
+
+
+
+
     static {
         try {
             //KeyStore keyStore = KeyStore.getInstance("JKS");
@@ -57,7 +83,7 @@ public class JwtTokenUtil {
     }
 
 
-    public static String generateToken(String subject, int expirationSeconds) {
+    public static String  generateToken(String subject, int expirationSeconds) {
         Map<String , Object> headerMap = new HashMap<String , Object>();
         headerMap.put("typ" , "JWT");
         headerMap.put("alg" , "RS256");
@@ -70,7 +96,18 @@ public class JwtTokenUtil {
                 .compact();
     }
 
-    public static String parseToken(String token) {
+
+
+
+
+
+
+    public static Map<String,Object> parseToken(String token) {
+
+        Map<String,Object> parseResult = new HashMap<String, Object>(4);
+        int result = TOKEN_CORRECT;
+        String msg = "";
+
         String subject = null;
         try {
             Claims claims = Jwts.parser()
@@ -80,10 +117,19 @@ public class JwtTokenUtil {
                     .parseClaimsJws(token)
                     .getBody();
             subject = claims.getSubject();
-        } catch (Exception e) {
+            parseResult.put("subject" , subject);
+
+        }catch(ExpiredJwtException eje){
+            result = TOKEN_ERR_EXPIRED;
+            msg = TOKEN_ERR_EXPIRED_MSG;
+        }catch (Exception e) {
             e.printStackTrace();
+            result = TOKEN_ERR_OTHER;
+            msg = TOKEN_ERR_OTHER_MSG;
         }
-        return subject;
+        parseResult.put("result" , result);
+        parseResult.put("msg" , msg);
+        return parseResult;
     }
 
 }
